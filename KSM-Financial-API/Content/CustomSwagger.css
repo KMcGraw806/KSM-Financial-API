@@ -1,0 +1,16 @@
+﻿.swagger-section #header {
+	background-color: #1D9A8533;
+}
+.swagger-section #explore, .swagger-section #auth_container .authorize__btn {
+	background-color: #ccc;
+	color: #000000
+}
+.logo__title {
+	color:black;
+}
+/*.swagger-section #header {
+	background-color: #222222 !important;
+	padding: 9px 14px 19px 14px;
+	height: 23px;
+	min-width: 775px;
+}*/

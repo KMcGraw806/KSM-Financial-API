@@ -1,0 +1,1269 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KSM-Financial-API</name>
+    </assembly>
+    <members>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:KSM_Financial_API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:KSM_Financial_API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,KSM_Financial_API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,KSM_Financial_API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:KSM_Financial_API.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},KSM_Financial_API.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.#ctor(KSM_Financial_API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,KSM_Financial_API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:KSM_Financial_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KSM_Financial_API.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KSM_Financial_API.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:KSM_Financial_API.Controllers.BankAccountsController">
+            <summary>
+            Bank Accounts Controller
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.GetAllBankAccountData">
+            <summary>
+            Endpoint to return all Bank Account Data
+            </summary>
+            <returns>List of Bank Account model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.GetAllBankAccountDataAsJson">
+            <summary>
+            Endpoint to return all Bank Account data in JSON
+            </summary>
+            <returns>List of Bank Account model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.GetBankAccountDataById(System.Int32)">
+            <summary>
+            Returns the information for a single Bank Account
+            </summary>
+            <remarks></remarks>
+            <param name="id">The Id of the Bank Account you want to view</param>
+            <returns>Single Bank Account model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.GetBankAccountDataAsJson(System.Int32)">
+            <summary>
+            Returns single Bank Account information in JSON
+            </summary>
+            <param name="id">The Id of the Bank Account you want to view</param>
+            <returns>Single Bank Account model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.CreateBankAccount(System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Boolean,System.Int32)">
+            <summary>
+            Create a new Bank Account
+            </summary>
+            <param name="householdId">The Id of the household whose </param>
+            <param name="ownerId"></param>
+            <param name="accountName"></param>
+            <param name="startingBalance"></param>
+            <param name="currentBalance"></param>
+            <param name="warningBalance"></param>
+            <param name="isDeleted"></param>
+            <param name="accountType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.EditBankAccount(System.Int32,System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Boolean,System.Int32)">
+            <summary>
+            Edit a Bank Account by the Id provided
+            </summary>
+            <param name="Id">The Id of the Bank Account that you wish to Edit</param>
+            <param name="householdId">The Id of the Household the Bank Account belongs to</param>
+            <param name="ownerId">The Id of the person that the Bank Account belongs to</param>
+            <param name="accountName">The name of the Bank Account</param>
+            <param name="startingBalance">Initial Balance</param>
+            <param name="currentBalance">Balance as of right now</param>
+            <param name="warningBalance">Balance </param>
+            <param name="isDeleted">Is this Bank Account Deleted?</param>
+            <param name="accountType">Checking or Savings</param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BankAccountsController.DeleteBankAccount(System.Int32)">
+            <summary>
+            Deletes a Bank Account by the Id provided
+            </summary>
+            <param name="id">The Id for the Bank Account that you wish to Delete</param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Controllers.BudgetItemsController">
+            <summary>
+            Budget Item Controller
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.GetAllBudgetItemData">
+            <summary>
+            Endpoint to return all Budget Item Data
+            </summary>
+            <returns>List of Budget Item model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.GetAllBudgetItemDataAsJson">
+            <summary>
+            Endpoint to return all Budget Item data in JSON
+            </summary>
+            <returns>List of Budget Item model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.GetBudgetItemDataById(System.Int32)">
+            <summary>
+            Returns the information for a single Budget Item
+            </summary>
+            <remarks></remarks>
+            <param name="id">The PK of the Budget Item you want to view</param>
+            <returns>Single Budget Item model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.GetBudgetItemDataAsJson(System.Int32)">
+            <summary>
+            Returns single Budget Item information in JSON
+            </summary>
+            <param name="id">The PK of the Budget Item you want to view</param>
+            <returns>Single Budget Item model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.CreateBudgetItem(System.Int32,System.String,System.Decimal,System.Decimal,System.Boolean)">
+            <summary>
+            Create a new Budget Item
+            </summary>
+            <param name="budgetId"></param>
+            <param name="itemName"></param>
+            <param name="targetAmount"></param>
+            <param name="currentAmount"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.EditBudgetItem(System.Int32,System.Int32,System.String,System.Decimal,System.Decimal,System.Boolean)">
+            <summary>
+            Edit a Budget Item by providing the Id
+            </summary>
+            <param name="Id"></param>
+            <param name="budgetId"></param>
+            <param name="itemName"></param>
+            <param name="targetAmount"></param>
+            <param name="currentAmount"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.DeleteBudgetItem(System.Int32)">
+            <summary>
+            Delete a Budget Item by it's Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Controllers.BudgetsController">
+            <summary>
+            Budgets Controller
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.GetAllBudgetData">
+            <summary>
+            Endpoint to return all Budget Data
+            </summary>
+            <returns>List of Budget model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.GetAllBudgetDataAsJson">
+            <summary>
+            Endpoint to return all Budget data in JSON
+            </summary>
+            <returns>List of Budget model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.GetBudgetDataById(System.Int32)">
+            <summary>
+            Returns the information for a single Budget
+            </summary>
+            <remarks></remarks>
+            <param name="id">The PK of the Budget you want to view</param>
+            <returns>Single Budget model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.GetBudgetDataAsJson(System.Int32)">
+            <summary>
+            Returns single Budget information in JSON
+            </summary>
+            <param name="id">The PK of the Budget you want to view</param>
+            <returns>Single Budget model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.CreateBudget(System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            Create a new Budget
+            </summary>
+            <param name="householdId"></param>
+            <param name="ownerId"></param>
+            <param name="budgetName"></param>
+            <param name="currentAmount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.EditBudget(System.Int32,System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            Edit a Budget by providing the Id
+            </summary>
+            <param name="Id"></param>
+            <param name="householdId"></param>
+            <param name="ownerId"></param>
+            <param name="budgetName"></param>
+            <param name="currentAmount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.BudgetsController.DeleteBudget(System.Int32)">
+            <summary>
+            Delete Budget by it's Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Controllers.HouseholdsController">
+            <summary>
+            Households Controller
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.GetAllHouseholdData">
+            <summary>
+            Endpoint to return all household data
+            </summary>
+            <returns>List of Household Model</returns>
+            <remarks>This end point is not meant to be hit, testing purposes only</remarks>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.GetDataAsJson">
+            <summary>
+            Endpoint to return all household data in JSON
+            </summary>
+            <returns>List of Household model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.GetHouseholdDataById(System.Int32)">
+            <summary>
+            Returns the information for a single Household
+            </summary>
+            <remarks>This area can be used to provide a fuller description of whatever to the user</remarks>
+            <param name="hhId">The PK of the Household you want to view</param>
+            <returns>Single Household model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.GetHouseholdDataAsJson(System.Int32)">
+            <summary>
+            Returns single Household information in JSON
+            </summary>
+            <param name="hhId">The PK of the Household you want to view</param>
+            <returns>Single Household model as JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.CreateHousehold(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new Household
+            </summary>
+            <param name="householdName"></param>
+            <param name="greeting"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.EditHousehold(System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            Edit a Household by providing the Id
+            </summary>
+            <param name="Id"></param>
+            <param name="householdName"></param>
+            <param name="greeting"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.DeleteHousehold(System.Int32)">
+            <summary>
+            Deletes single Household by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Controllers.TransactionsController">
+            <summary>
+            Transactions Controller
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.GetAllTransactionData">
+            <summary>
+            Endpoint to return all Transaction Data
+            </summary>
+            <returns>List of Transaction model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.GetAllTransactionDataAsJson">
+            <summary>
+            Endpoint to return all Transaction data in JSON
+            </summary>
+            <returns>List of Transaction model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.GetTransactionDataById(System.Int32)">
+            <summary>
+            Returns the information for a single Transaction
+            </summary>
+            <remarks></remarks>
+            <param name="id">The PK of the Transaction you want to view</param>
+            <returns>Single Transaction model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.GetTransactionDataAsJson(System.Int32)">
+            <summary>
+            Returns single Transaction information in JSON
+            </summary>
+            <param name="id">The PK of the Transaction you want to view</param>
+            <returns>Single Transaction model in JSON</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.CreateTransaction(System.Int32,System.Int32,System.String,System.Int32,System.Decimal,System.String,System.Boolean)">
+            <summary>
+            Create a new Transaction
+            </summary>
+            <param name="accountId">The Bank Account to pull from</param>
+            <param name="budgetItemId">The Budget Item the Transaction is listed under</param>
+            <param name="ownerId">The person creating the Transaction</param>
+            <param name="transactionType"></param>
+            <param name="amount">The amount </param>
+            <param name="memo"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.EditTransaction(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Decimal,System.String,System.Boolean)">
+            <summary>
+            Edit a Transaction by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="accountId"></param>
+            <param name="budgetItemId"></param>
+            <param name="ownerId"></param>
+            <param name="transactionType"></param>
+            <param name="amount"></param>
+            <param name="memo"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Controllers.TransactionsController.DeleteTransaction(System.Int32)">
+            <summary>
+            Delete a Transaction by the Id provided
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Enums.AccountType">
+            <summary>
+            Account Type Enum
+            </summary>
+        </member>
+        <member name="F:KSM_Financial_API.Enums.AccountType.Checking">
+            <summary>
+            Checking Account
+            </summary>
+        </member>
+        <member name="F:KSM_Financial_API.Enums.AccountType.Savings">
+            <summary>
+            Savings Account
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Enums.TransactionType">
+            <summary>
+            Transaction Type Enum
+            </summary>
+        </member>
+        <member name="F:KSM_Financial_API.Enums.TransactionType.Deposit">
+            <summary>
+            Deposit
+            </summary>
+        </member>
+        <member name="F:KSM_Financial_API.Enums.TransactionType.Withdrawal">
+            <summary>
+            Withdrawal
+            </summary>
+        </member>
+        <member name="F:KSM_Financial_API.Enums.TransactionType.Transfer">
+            <summary>
+            Transfer
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetAllHouseholdData">
+            <summary>
+            Returns all Household Data.
+            </summary>
+            <returns>List of Household Model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetHouseholdDataById(System.Int32)">
+            <summary>
+            Returns all Household Data for one Id
+            </summary>
+            <param name="hhId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateHousehold(System.String,System.String,System.Boolean)">
+            <summary>
+            This will create a new Household
+            </summary>
+            <param name="householdName"></param>
+            <param name="greeting"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.EditHousehold(System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            This will edit a Household by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="householdName"></param>
+            <param name="greeting"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.DeleteHouseholdById(System.Int32)">
+            <summary>
+            This will delete a Household by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetAllBankAccountData">
+            <summary>
+            Returns all Bank Account Data.
+            </summary>
+            <returns>List of Bank Account Model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetBankAccountDataById(System.Int32)">
+            <summary>
+            Returns all Bank Account Data for one Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateBankAccount(System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Boolean,System.Int32)">
+            <summary>
+            This will create a new Bank Account
+            </summary>
+            <param name="householdId"></param>
+            <param name="ownerId"></param>
+            <param name="accountName"></param>
+            <param name="startingBalance"></param>
+            <param name="currentBalance"></param>
+            <param name="warningBalance"></param>
+            <param name="isDeleted"></param>
+            <param name="accountType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.EditBankAccount(System.Int32,System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Boolean,System.Int32)">
+            <summary>
+            This will edit a Bank Account by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="householdId"></param>
+            <param name="ownerId"></param>
+            <param name="accountName"></param>
+            <param name="startingBalance"></param>
+            <param name="currentBalance"></param>
+            <param name="warningBalance"></param>
+            <param name="isDeleted"></param>
+            <param name="accountType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.DeleteBankAccountById(System.Int32)">
+            <summary>
+            This will delete a Bank Account by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetAllBudgetData">
+            <summary>
+            Returns all Budget Data
+            </summary>
+            <returns>List of Budget Model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetBudgetDataById(System.Int32)">
+            <summary>
+            Returns all Budget Data for one Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateBudget(System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            This will create a new Budget
+            </summary>
+            <param name="householdId"></param>
+            <param name="ownerId"></param>
+            <param name="budgetName"></param>
+            <param name="currentAmount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.EditBudget(System.Int32,System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            This will edit a Budget by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="householdId"></param>
+            <param name="ownerId"></param>
+            <param name="budgetName"></param>
+            <param name="currentAmount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.DeleteBudgetById(System.Int32)">
+            <summary>
+            This will delete a Budget by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetAllBudgetItemData">
+            <summary>
+            Returns all Budget Item Data.
+            </summary>
+            <returns>List of Budget Item Model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetBudgetItemDataById(System.Int32)">
+            <summary>
+            Returns all Budget Item Data for one Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateBudgetItem(System.Int32,System.String,System.Decimal,System.Decimal,System.Boolean)">
+            <summary>
+            This will create a new Budget Item
+            </summary>
+            <param name="budgetId"></param>
+            <param name="itemName"></param>
+            <param name="targetAmount"></param>
+            <param name="currentAmount"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.EditBudgetItem(System.Int32,System.Int32,System.String,System.Decimal,System.Decimal,System.Boolean)">
+            <summary>
+            This will edit a Budget Item by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="budgetId"></param>
+            <param name="itemName"></param>
+            <param name="targetAmount"></param>
+            <param name="currentAmount"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.DeleteBudgetItemById(System.Int32)">
+            <summary>
+            This will delete a Budget Item by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetAllTransactionData">
+            <summary>
+            Returns all Transaction Data.
+            </summary>
+            <returns>List of Transaction Model</returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.GetTransactionDataById(System.Int32)">
+            <summary>
+            Returns all Transaction Data for one Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateTransaction(System.Int32,System.Int32,System.String,System.Int32,System.Decimal,System.String,System.Boolean)">
+            <summary>
+            This will create a new Transaction
+            </summary>
+            <param name="accountId"></param>
+            <param name="budgetItemId"></param>
+            <param name="ownerId"></param>
+            <param name="transactionType"></param>
+            <param name="amount"></param>
+            <param name="memo"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.EditTransaction(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Decimal,System.String,System.Boolean)">
+            <summary>
+            This will edit a Transaction by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="accountId"></param>
+            <param name="budgetItemId"></param>
+            <param name="ownerId"></param>
+            <param name="transactionType"></param>
+            <param name="amount"></param>
+            <param name="memo"></param>
+            <param name="isDeleted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.DeleteTransactionById(System.Int32)">
+            <summary>
+            This will delete all Transaction Data By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KSM_Financial_API.Models.BankAccount">
+            <summary>
+            Bank Account
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.Id">
+            <summary>
+            Bank Account Id
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.HouseholdId">
+            <summary>
+            Id of the Household that the Bank Account is in
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.OwnerId">
+            <summary>
+            Id of the Owner of the Bank Account
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.AccountName">
+            <summary>
+            Name of the Account
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.Created">
+            <summary>
+            Date and Time that the Account was created
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.StartingBalance">
+            <summary>
+            Starting Balance
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.CurrentBalance">
+            <summary>
+            Current Balance
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.WarningBalance">
+            <summary>
+            Warning Balance
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.IsDeleted">
+            <summary>
+            Boolean that indicates whether Bank Account is deleted or not
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BankAccount.AccountType">
+            <summary>
+            Type of Account (Checking or Savings)
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Models.Budget">
+            <summary>
+            Budget
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Budget.Id">
+            <summary>
+            Id of the Budget
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Budget.HouseholdId">
+            <summary>
+            Id of the Household of the Budget
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Budget.OwnerId">
+            <summary>
+            Id of the Owner of the Budget
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Budget.Created">
+            <summary>
+            Date and Time Budget was Created
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Budget.BudgetName">
+            <summary>
+            Name of the Budget
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Budget.CurrentAmount">
+            <summary>
+            Current Amount
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Models.BudgetItem">
+            <summary>
+            Budget Item
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.Id">
+            <summary>
+            Id of the Budget Item
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.BudgetId">
+            <summary>
+            Id of the Budget that the Budget Item is in
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.Created">
+            <summary>
+            Date and Time Budget Item was Created
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.ItemName">
+            <summary>
+            Name of the Budget Item
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.TargetAmount">
+            <summary>
+            Target Amount
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.CurrentAmount">
+            <summary>
+            Current Amount
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.BudgetItem.IsDeleted">
+            <summary>
+            Boolean that shows whether or not Budget Item has been Deleted
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Models.Household">
+            <summary>
+            Household
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Household.Id">
+            <summary>
+            PK
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Household.HouseholdName">
+            <summary>
+            Household name determined by user
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Household.Greeting">
+            <summary>
+            Household greeting determined by user
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Household.Created">
+            <summary>
+            Created date of the Household
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Household.IsDeleted">
+            <summary>
+            Is this household soft deleted or not?
+            </summary>
+        </member>
+        <member name="T:KSM_Financial_API.Models.Transaction">
+            <summary>
+            Transaction
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.Id">
+            <summary>
+            The P(rimary) K(ey) of the Transaction
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.AccountId">
+            <summary>
+            The P(rimary) K(ey) of the Account
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.BudgetItemId">
+            <summary>
+            The P(rimary) K(ey) of the Budget Item
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.OwnerId">
+            <summary>
+            The P(rimary) K(ey) of the Owner
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.TransactionType">
+            <summary>
+            Type of Transaction (Deposit, Withdrawal, Transfer)
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.Created">
+            <summary>
+            Date and Time Transaction was Created
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.Amount">
+            <summary>
+            Amount
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.Memo">
+            <summary>
+            Explanation of the Transaction
+            </summary>
+        </member>
+        <member name="P:KSM_Financial_API.Models.Transaction.IsDeleted">
+            <summary>
+            Soft delete boolean
+            </summary>
+        </member>
+    </members>
+</doc>
