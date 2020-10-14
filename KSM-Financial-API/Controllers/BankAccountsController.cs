@@ -66,13 +66,13 @@ namespace KSM_Financial_API.Controllers
         /// Create a new Bank Account
         /// </summary>
         /// <param name="householdId">The Id of the household whose </param>
-        /// <param name="ownerId"></param>
-        /// <param name="accountName"></param>
-        /// <param name="startingBalance"></param>
-        /// <param name="currentBalance"></param>
-        /// <param name="warningBalance"></param>
-        /// <param name="isDeleted"></param>
-        /// <param name="accountType"></param>
+        /// <param name="ownerId">The Id of the person who will own this Bank Account</param>
+        /// <param name="accountName">What you would like the Account Name to be</param>
+        /// <param name="startingBalance">How much money the Bank Account will start with</param>
+        /// <param name="currentBalance">How much money is currently in the Bank Account</param>
+        /// <param name="warningBalance">When you should be alerted of low balance</param>
+        /// <param name="isDeleted">Is this Bank Account Deleted?</param>
+        /// <param name="accountType">Checking or Saving?</param>
         /// <returns></returns>
         [HttpPost, Route("CreateBankAccount")]
         public IHttpActionResult CreateBankAccount(int householdId, string ownerId, string accountName, decimal startingBalance, decimal currentBalance, decimal warningBalance, bool isDeleted, int accountType)

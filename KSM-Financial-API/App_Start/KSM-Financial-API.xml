@@ -518,13 +518,13 @@
             Create a new Bank Account
             </summary>
             <param name="householdId">The Id of the household whose </param>
-            <param name="ownerId"></param>
-            <param name="accountName"></param>
-            <param name="startingBalance"></param>
-            <param name="currentBalance"></param>
-            <param name="warningBalance"></param>
-            <param name="isDeleted"></param>
-            <param name="accountType"></param>
+            <param name="ownerId">The Id of the person who will own this Bank Account</param>
+            <param name="accountName">What you would like the Account Name to be</param>
+            <param name="startingBalance">How much money the Bank Account will start with</param>
+            <param name="currentBalance">How much money is currently in the Bank Account</param>
+            <param name="warningBalance">When you should be alerted of low balance</param>
+            <param name="isDeleted">Is this Bank Account Deleted?</param>
+            <param name="accountType">Checking or Saving?</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.BankAccountsController.EditBankAccount(System.Int32,System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Boolean,System.Int32)">
@@ -585,30 +585,30 @@
             <summary>
             Create a new Budget Item
             </summary>
-            <param name="budgetId"></param>
-            <param name="itemName"></param>
-            <param name="targetAmount"></param>
-            <param name="currentAmount"></param>
-            <param name="isDeleted"></param>
+            <param name="budgetId">The Id of the Budget the Budget Item will be under</param>
+            <param name="itemName">The Name of the Budget Item</param>
+            <param name="targetAmount">How much you expect to spend on this Budget Item</param>
+            <param name="currentAmount">How much you have currently spent on the Budget Item</param>
+            <param name="isDeleted">Is this Budget Item deleted?</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.EditBudgetItem(System.Int32,System.Int32,System.String,System.Decimal,System.Decimal,System.Boolean)">
             <summary>
             Edit a Budget Item by providing the Id
             </summary>
-            <param name="Id"></param>
-            <param name="budgetId"></param>
-            <param name="itemName"></param>
-            <param name="targetAmount"></param>
-            <param name="currentAmount"></param>
-            <param name="isDeleted"></param>
+            <param name="Id">The Id of the Budget Item you want to edit</param>
+            <param name="budgetId">The Id of the Budget that the Budget Item is under</param>
+            <param name="itemName">The Name of the Budget Item</param>
+            <param name="targetAmount">The new amount that you expect to spend on this Budget Item</param>
+            <param name="currentAmount">The new amount that has currently been spent on this Budget Item</param>
+            <param name="isDeleted">Is this Budget Item deleted?</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.BudgetItemsController.DeleteBudgetItem(System.Int32)">
             <summary>
             Delete a Budget Item by it's Id
             </summary>
-            <param name="id"></param>
+            <param name="id">The Id of the Budget Item that you want to delete</param>
             <returns></returns>
         </member>
         <member name="T:KSM_Financial_API.Controllers.BudgetsController">
@@ -647,28 +647,28 @@
             <summary>
             Create a new Budget
             </summary>
-            <param name="householdId"></param>
-            <param name="ownerId"></param>
-            <param name="budgetName"></param>
-            <param name="currentAmount"></param>
+            <param name="householdId">The Id of the Household that the new Budget will be added to</param>
+            <param name="ownerId">The Id of the person who this Budget will belong to</param>
+            <param name="budgetName">The Name of the Budget</param>
+            <param name="currentAmount">The amount that has currently been spent on the Budget</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.BudgetsController.EditBudget(System.Int32,System.Int32,System.String,System.String,System.Decimal)">
             <summary>
             Edit a Budget by providing the Id
             </summary>
-            <param name="Id"></param>
-            <param name="householdId"></param>
-            <param name="ownerId"></param>
-            <param name="budgetName"></param>
-            <param name="currentAmount"></param>
+            <param name="Id">The Id of the Budget you want to Edit</param>
+            <param name="householdId">The Id of the Household that the Budget belongs to</param>
+            <param name="ownerId">The Id of the owner of the Budget</param>
+            <param name="budgetName">The name of the Budget</param>
+            <param name="currentAmount">The amount that has currently been spent on the Budget</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.BudgetsController.DeleteBudget(System.Int32)">
             <summary>
             Delete Budget by it's Id
             </summary>
-            <param name="id"></param>
+            <param name="id">The Id of the Budget you would like to delete</param>
             <returns></returns>
         </member>
         <member name="T:KSM_Financial_API.Controllers.HouseholdsController">
@@ -704,30 +704,29 @@
             <param name="hhId">The PK of the Household you want to view</param>
             <returns>Single Household model as JSON</returns>
         </member>
-        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.CreateHousehold(System.String,System.String,System.Boolean)">
+        <member name="M:KSM_Financial_API.Controllers.HouseholdsController.CreateHousehold(System.String,System.String)">
             <summary>
             Create a new Household
             </summary>
-            <param name="householdName"></param>
-            <param name="greeting"></param>
-            <param name="isDeleted"></param>
+            <param name="householdName">Name you would like to give the Household</param>
+            <param name="greeting">Greeting for new Household Members</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.HouseholdsController.EditHousehold(System.Int32,System.String,System.String,System.Boolean)">
             <summary>
             Edit a Household by providing the Id
             </summary>
-            <param name="Id"></param>
-            <param name="householdName"></param>
-            <param name="greeting"></param>
-            <param name="isDeleted"></param>
+            <param name="Id">The Id of the Household you want to edit</param>
+            <param name="householdName">The name of the Household you want to edit</param>
+            <param name="greeting">Greeting message of the Household you want to edit</param>
+            <param name="isDeleted">Is this Household deleted?</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.HouseholdsController.DeleteHousehold(System.Int32)">
             <summary>
             Deletes single Household by Id
             </summary>
-            <param name="id"></param>
+            <param name="id">The Id of the Household you want to delete</param>
             <returns></returns>
         </member>
         <member name="T:KSM_Financial_API.Controllers.TransactionsController">
@@ -769,31 +768,31 @@
             <param name="accountId">The Bank Account to pull from</param>
             <param name="budgetItemId">The Budget Item the Transaction is listed under</param>
             <param name="ownerId">The person creating the Transaction</param>
-            <param name="transactionType"></param>
-            <param name="amount">The amount </param>
-            <param name="memo"></param>
-            <param name="isDeleted"></param>
+            <param name="transactionType">Deposit, Withdrawal or Transfer</param>
+            <param name="amount">The amount spent in this Transaction</param>
+            <param name="memo">Description of the Transaction</param>
+            <param name="isDeleted">Is this Transaction deleted?</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.TransactionsController.EditTransaction(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Decimal,System.String,System.Boolean)">
             <summary>
             Edit a Transaction by Id
             </summary>
-            <param name="Id"></param>
-            <param name="accountId"></param>
-            <param name="budgetItemId"></param>
-            <param name="ownerId"></param>
-            <param name="transactionType"></param>
-            <param name="amount"></param>
-            <param name="memo"></param>
-            <param name="isDeleted"></param>
+            <param name="Id">The Id of the Transaction you want to Edit</param>
+            <param name="accountId">The Id of the Account used in this Transaction</param>
+            <param name="budgetItemId">The Id of the Budget Item that the Transaction is for</param>
+            <param name="ownerId">The Id of the person that made the Transaction</param>
+            <param name="transactionType">Deposit, Withdrawal or Transfer</param>
+            <param name="amount">The amount spent in this Transaction</param>
+            <param name="memo">Description of the Transaction</param>
+            <param name="isDeleted">Is this Transaction deleted?</param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Controllers.TransactionsController.DeleteTransaction(System.Int32)">
             <summary>
             Delete a Transaction by the Id provided
             </summary>
-            <param name="id"></param>
+            <param name="id">The Id of the Transaction you want to delete</param>
             <returns></returns>
         </member>
         <member name="T:KSM_Financial_API.Enums.AccountType">
@@ -831,6 +830,11 @@
             Transfer
             </summary>
         </member>
+        <member name="T:KSM_Financial_API.Models.ApiDbContext">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:KSM_Financial_API.Models.ApiDbContext.#ctor">
             <summary>
             
@@ -849,13 +853,12 @@
             <param name="hhId"></param>
             <returns></returns>
         </member>
-        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateHousehold(System.String,System.String,System.Boolean)">
+        <member name="M:KSM_Financial_API.Models.ApiDbContext.CreateHousehold(System.String,System.String)">
             <summary>
             This will create a new Household
             </summary>
             <param name="householdName"></param>
             <param name="greeting"></param>
-            <param name="isDeleted"></param>
             <returns></returns>
         </member>
         <member name="M:KSM_Financial_API.Models.ApiDbContext.EditHousehold(System.Int32,System.String,System.String,System.Boolean)">

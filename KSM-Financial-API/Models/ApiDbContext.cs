@@ -9,6 +9,9 @@ using System.Web;
 
 namespace KSM_Financial_API.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApiDbContext : DbContext
     {
         /// <summary>
@@ -45,15 +48,13 @@ namespace KSM_Financial_API.Models
         /// </summary>
         /// <param name="householdName"></param>
         /// <param name="greeting"></param>
-        /// <param name="isDeleted"></param>
         /// <returns></returns>
-        public int CreateHousehold(string householdName, string greeting, bool isDeleted)
+        public int CreateHousehold(string householdName, string greeting)
         {
-            return Database.ExecuteSqlCommand("CreateHousehold @householdName, @greeting, @isDeleted",
+            return Database.ExecuteSqlCommand("CreateHousehold @HouseholdName, @Greeting",
 
-                new SqlParameter("householdName", householdName),
-                new SqlParameter("greeting", greeting),
-                new SqlParameter("isDeleted", isDeleted)
+                new SqlParameter("HouseholdName", householdName),
+                new SqlParameter("Greeting", greeting)
             );
         }
 
@@ -206,7 +207,7 @@ namespace KSM_Financial_API.Models
         {
             return Database.ExecuteSqlCommand("CreateBudget @householdId, @ownerId, @budgetName, @currentAmount",
 
-                new SqlParameter("hosueholdId", householdId),
+                new SqlParameter("householdId", householdId),
                 new SqlParameter("ownerId", ownerId),
                 new SqlParameter("budgetName", budgetName),
                 new SqlParameter("currentAmount", currentAmount)
@@ -227,7 +228,7 @@ namespace KSM_Financial_API.Models
             return Database.ExecuteSqlCommand("EditBudget @Id @householdId, @ownerId, @budgetName, @currentAmount",
 
                 new SqlParameter("Id", Id),
-                new SqlParameter("hosueholdId", householdId),
+                new SqlParameter("householdId", householdId),
                 new SqlParameter("ownerId", ownerId),
                 new SqlParameter("budgetName", budgetName),
                 new SqlParameter("currentAmount", currentAmount)

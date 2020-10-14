@@ -65,11 +65,11 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Create a new Budget Item
         /// </summary>
-        /// <param name="budgetId"></param>
-        /// <param name="itemName"></param>
-        /// <param name="targetAmount"></param>
-        /// <param name="currentAmount"></param>
-        /// <param name="isDeleted"></param>
+        /// <param name="budgetId">The Id of the Budget the Budget Item will be under</param>
+        /// <param name="itemName">The Name of the Budget Item</param>
+        /// <param name="targetAmount">How much you expect to spend on this Budget Item</param>
+        /// <param name="currentAmount">How much you have currently spent on the Budget Item</param>
+        /// <param name="isDeleted">Is this Budget Item deleted?</param>
         /// <returns></returns>
         [HttpPost, Route("CreateBudgetItem")]
         public IHttpActionResult CreateBudgetItem(int budgetId, string itemName, decimal targetAmount, decimal currentAmount, bool isDeleted)
@@ -80,12 +80,12 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Edit a Budget Item by providing the Id
         /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="budgetId"></param>
-        /// <param name="itemName"></param>
-        /// <param name="targetAmount"></param>
-        /// <param name="currentAmount"></param>
-        /// <param name="isDeleted"></param>
+        /// <param name="Id">The Id of the Budget Item you want to edit</param>
+        /// <param name="budgetId">The Id of the Budget that the Budget Item is under</param>
+        /// <param name="itemName">The Name of the Budget Item</param>
+        /// <param name="targetAmount">The new amount that you expect to spend on this Budget Item</param>
+        /// <param name="currentAmount">The new amount that has currently been spent on this Budget Item</param>
+        /// <param name="isDeleted">Is this Budget Item deleted?</param>
         /// <returns></returns>
         [HttpPatch, Route("EditBudgetItem")]
         public IHttpActionResult EditBudgetItem(int Id, int budgetId, string itemName, decimal targetAmount, decimal currentAmount, bool isDeleted)
@@ -96,7 +96,7 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Delete a Budget Item by it's Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The Id of the Budget Item that you want to delete</param>
         /// <returns></returns>
         [Route("DeleteBudgetItem")]
         public async Task<int> DeleteBudgetItem(int id)

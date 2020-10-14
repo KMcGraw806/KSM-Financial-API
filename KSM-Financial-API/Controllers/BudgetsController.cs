@@ -65,10 +65,10 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Create a new Budget
         /// </summary>
-        /// <param name="householdId"></param>
-        /// <param name="ownerId"></param>
-        /// <param name="budgetName"></param>
-        /// <param name="currentAmount"></param>
+        /// <param name="householdId">The Id of the Household that the new Budget will be added to</param>
+        /// <param name="ownerId">The Id of the person who this Budget will belong to</param>
+        /// <param name="budgetName">The Name of the Budget</param>
+        /// <param name="currentAmount">The amount that has currently been spent on the Budget</param>
         /// <returns></returns>
         [HttpPost, Route("CreateBudget")]
         public IHttpActionResult CreateBudget(int householdId, string ownerId, string budgetName, decimal currentAmount)
@@ -79,11 +79,11 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Edit a Budget by providing the Id
         /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="householdId"></param>
-        /// <param name="ownerId"></param>
-        /// <param name="budgetName"></param>
-        /// <param name="currentAmount"></param>
+        /// <param name="Id">The Id of the Budget you want to Edit</param>
+        /// <param name="householdId">The Id of the Household that the Budget belongs to</param>
+        /// <param name="ownerId">The Id of the owner of the Budget</param>
+        /// <param name="budgetName">The name of the Budget</param>
+        /// <param name="currentAmount">The amount that has currently been spent on the Budget</param>
         /// <returns></returns>
         [HttpPatch, Route("EditBudget")]
         public IHttpActionResult EditBudget(int Id, int householdId, string ownerId, string budgetName, decimal currentAmount)
@@ -94,7 +94,7 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Delete Budget by it's Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The Id of the Budget you would like to delete</param>
         /// <returns></returns>
         [Route("DeleteBudget")]
         public async Task<int> DeleteBudget(int id)

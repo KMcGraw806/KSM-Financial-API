@@ -68,12 +68,11 @@ namespace KSM_Financial_API.Controllers
         /// </summary>
         /// <param name="householdName">Name you would like to give the Household</param>
         /// <param name="greeting">Greeting for new Household Members</param>
-        /// <param name="isDeleted">Is this Household Deleted?</param>
         /// <returns></returns>
         [HttpPost, Route("CreateHousehold")]
-        public IHttpActionResult CreateHousehold(string householdName, string greeting, bool isDeleted)
+        public IHttpActionResult CreateHousehold(string householdName, string greeting)
         {
-            return Ok(db.CreateHousehold(householdName, greeting, isDeleted));
+            return Ok(db.CreateHousehold(householdName, greeting));
         }
 
         /// <summary>

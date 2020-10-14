@@ -67,10 +67,10 @@ namespace KSM_Financial_API.Controllers
         /// <param name="accountId">The Bank Account to pull from</param>
         /// <param name="budgetItemId">The Budget Item the Transaction is listed under</param>
         /// <param name="ownerId">The person creating the Transaction</param>
-        /// <param name="transactionType"></param>
-        /// <param name="amount">The amount </param>
-        /// <param name="memo"></param>
-        /// <param name="isDeleted"></param>
+        /// <param name="transactionType">Deposit, Withdrawal or Transfer</param>
+        /// <param name="amount">The amount spent in this Transaction</param>
+        /// <param name="memo">Description of the Transaction</param>
+        /// <param name="isDeleted">Is this Transaction deleted?</param>
         /// <returns></returns>
         [HttpPost, Route("CreateTransaction")]
         public IHttpActionResult CreateTransaction(int accountId, int budgetItemId, string ownerId, int transactionType, decimal amount, string memo, bool isDeleted)
@@ -81,14 +81,14 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Edit a Transaction by Id
         /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="accountId"></param>
-        /// <param name="budgetItemId"></param>
-        /// <param name="ownerId"></param>
-        /// <param name="transactionType"></param>
-        /// <param name="amount"></param>
-        /// <param name="memo"></param>
-        /// <param name="isDeleted"></param>
+        /// <param name="Id">The Id of the Transaction you want to Edit</param>
+        /// <param name="accountId">The Id of the Account used in this Transaction</param>
+        /// <param name="budgetItemId">The Id of the Budget Item that the Transaction is for</param>
+        /// <param name="ownerId">The Id of the person that made the Transaction</param>
+        /// <param name="transactionType">Deposit, Withdrawal or Transfer</param>
+        /// <param name="amount">The amount spent in this Transaction</param>
+        /// <param name="memo">Description of the Transaction</param>
+        /// <param name="isDeleted">Is this Transaction deleted?</param>
         /// <returns></returns>
         [HttpPatch, Route("EditTransaction")]
         public IHttpActionResult EditTransaction(int Id, int accountId, int budgetItemId, string ownerId, int transactionType, decimal amount, string memo, bool isDeleted)
@@ -99,7 +99,7 @@ namespace KSM_Financial_API.Controllers
         /// <summary>
         /// Delete a Transaction by the Id provided
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The Id of the Transaction you want to delete</param>
         /// <returns></returns>
         [Route("DeleteTransaction")]
         public async Task<int> DeleteTransaction(int id)
